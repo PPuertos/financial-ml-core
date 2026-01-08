@@ -4,14 +4,12 @@
 
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
 [![Scikit-Learn Compatible](https://img.shields.io/badge/sklearn-compatible-orange.svg)](https://scikit-learn.org/)
-[![Documentation](https://img.shields.io/badge/docs-MkDocs-blue.svg)](https://ppuertos.github.io/financial-ml-core/docs)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Documentation](https://img.shields.io/badge/docs-MkDocs-blue.svg)](https://ppuertos.github.io/financial-ml-core/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT/)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-informational?logo=linkedin)](https://www.linkedin.com/in/francisco-puertos-rumayor/)
 
 ---
 **`finml-core`** is not just a tool for building models; it is a framework built from first principles to handle the inherent "uncertainty" of financial data. This library was born from the necessity to understand the mechanics of high-level quantitative finance, moving beyond simple API calls to engineer a system that respects the statistical nature of market series.
-
-> 📘 **Full Documentation**: For detailed API references, architectural deep dives, and tutorials, visit our [Documentation Site](https://ppuertos.github.io/financial-ml-core/docs).
 
 ## 🔬 First-Principles Engineering
 

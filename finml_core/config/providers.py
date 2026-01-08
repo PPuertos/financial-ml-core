@@ -41,7 +41,7 @@ PROVIDERS = {
 
     You can reach out by:
 
-    * 🛠️ <a href="https://github.com/PPuertos/stockMarketDashboardNew/issues/new" target="_blank">**Open GitHub Issue**</a>
+    * 🛠️ <a href="https://github.com/PPuertos/financial-ml-core/issues/new" target="_blank">**Open GitHub Issue**</a>
     * ✉️ <a href="mailto:paco_puertos11@hotmail.com" target="_blank">**Email**</a>
     * 💼 <a href="https://www.linkedin.com/in/francisco-puertos-rumayor/" target="_blank">**LinkedIn**</a>
 """
