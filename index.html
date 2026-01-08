@@ -1,0 +1,1481 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+        <link rel="next" href="reference/pipelines/data_factory/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/logo_light.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Financial ML Core</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#financial-ml-core-the-foundation" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="." title="Financial ML Core" class="md-header__button md-logo" aria-label="Financial ML Core" data-md-component="logo">
+      
+  <img src="assets/logo_light.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Financial ML Core
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Home
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="." title="Financial ML Core" class="md-nav__button md-logo" aria-label="Financial ML Core" data-md-component="logo">
+      
+  <img src="assets/logo_light.png" alt="logo">
+
+    </a>
+    Financial ML Core
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="." class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#financial-data-geometry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📐 The Philosophy of Financial Data Geometry
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📐 The Philosophy of Financial Data Geometry">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-date-ticker-is-non-negotiable" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why [Date, Ticker] is Non-Negotiable
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-engines-architectural-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⚙️ Core Engines &amp; Architectural Modules
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="⚙️ Core Engines &amp; Architectural Modules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-the-data-factory-architecture-datasetgenerator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. The Data Factory Architecture DatasetGenerator
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-market-data-loader-marketdataloader" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Market Data Loader MarketDataLoader
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-the-sanitization-engine-datacleaner" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. The Sanitization Engine DataCleaner
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-feature-engineering-featuregenerator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Feature Engineering FeatureGenerator
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-structural-labeling-triplebarrierlabeling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Structural Labeling TripleBarrierLabeling
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-model-selection-purgedkfold" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Model Selection PurgedKFold
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getting-started" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚀 Getting Started
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚀 Getting Started">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-setup-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Setup Environment
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Installation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage-example-basic-financial-ml-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧪 Usage Example: Basic Financial ML Pipeline
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧪 Usage Example: Basic Financial ML Pipeline">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-orchestrating-the-data-factory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Orchestrating the Data Factory
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Orchestrating the Data Factory">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#automated-ingestion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Automated Ingestion
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-statistical-split-purging-embargo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Statistical Split (Purging &amp; Embargo)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-leakage-free-validation-purged-k-fold" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Leakage-Free Validation (Purged K-Fold)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#license-ethical-note" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⚖️ License &amp; Ethical Note
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-finml-core" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🏛️ Why FinML-Core?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📚 References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ⚙️ Infrastructure
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ⚙️ Infrastructure
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/pipelines/data_factory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Factory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🌐 Data Access
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🌐 Data Access
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/data/loader/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Loader
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/config/providers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Providers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧪 Model Selection
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🧪 Model Selection
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/model_selection/split/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cross-Validation & Splitting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💻 Data Processing
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    💻 Data Processing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/processing/cleaning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Cleaning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/processing/features/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Feature Engineering
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/processing/labeling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Financial Labeling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📈 Metrics & Indicators
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    📈 Metrics & Indicators
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/metrics/statistics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Technical Statistics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/metrics/indicators/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Financial Indicators
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/metrics/performance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Performance Evaluation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="financial-ml-core-the-foundation">🏛️ Financial ML Core: The Foundation</h1>
+<blockquote>
+<p>"To push innovation forward, one must first master the foundations that got us here."</p>
+</blockquote>
+<p><a href="https://www.python.org/downloads/" target="_blank"><img alt="Python 3.9+" src="https://img.shields.io/badge/python-3.9+-blue.svg" /></a>
+<a href="https://scikit-learn.org/" target="_blank"><img alt="Scikit-Learn Compatible" src="https://img.shields.io/badge/sklearn-compatible-orange.svg" /></a>
+<a href="https://opensource.org/licenses/MIT" target="_blank"><img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" /></a>
+<a href="https://github.com/PPuertos/financial-ml-core"><img alt="GitHub" src="https://img.shields.io/badge/GitHub-Repository-blue?logo=github" /></a>
+<a href="https://www.linkedin.com/in/francisco-puertos-rumayor/" target="_blank"><img alt="LinkedIn" src="https://img.shields.io/badge/LinkedIn-Connect-informational?logo=linkedin" /></a></p>
+<hr />
+<p><strong><code>finml-core</code></strong> is an institutional-grade framework engineered from first principles to address the inherent uncertainty and structural complexity of financial time series. This library was born from the necessity to move beyond "black-box" API calls, providing a transparent and mathematically rigorous system that respects the unique statistical nature of market data.</p>
+<p>Rather than offering a collection of standard tools, <strong><code>finml-core</code></strong> provides a governed pipeline designed to prevent the most common pitfalls in Quantitative Finance—such as look-ahead bias, information leakage, and the misapplication of standard cross-validation to non-IID data.</p>
+<p><code>finml-core</code> is a high-performance Python library designed for quantitative researchers and financial engineers. It implements rigorous methodologies proposed by Marcos López de Prado in <em>"Advances in Financial Machine Learning"</em>, ensuring that ML models for trading are free from common pitfalls like look-ahead bias and serial correlation leakage.</p>
+<hr />
+<h2 id="financial-data-geometry">📐 The Philosophy of Financial Data Geometry</h2>
+<p>In Quantitative Finance, the data structure is not just a container; it is a <strong>Coordinate System</strong>. Most generic machine learning frameworks fail because they treat financial series as flat tables, ignoring the relationship between time and specific assets. </p>
+<p><strong><code>finml-core</code></strong> enforces a strict 3-dimensional perspective—<strong>Time × Asset × Feature</strong>—through its mandatory <strong>MultiIndex Architecture</strong>.</p>
+<h3 id="why-date-ticker-is-non-negotiable">Why [Date, Ticker] is Non-Negotiable</h3>
+<p>Financial time series are characterized by cross-sectional dependence and heterogeneous scales. By enforcing a <code>pd.MultiIndex</code> with <code>Date</code> and <code>Ticker</code> levels as the primary index, the framework achieves three critical objectives:</p>
+<ol>
+<li><strong>Group-Wise Vectorization</strong>: Statistical operations (like volatility estimation or RSI) are calculated <em>per asset</em> in a vectorized manner. This ensures that a high-volatility ticker (like TSLA) never influences the normalization or feature scaling of a low-volatility one (like KO).</li>
+<li><strong>Temporal Alignment</strong>: It ensures that during the Labeling Process, the "Vertical Barrier" (time-limit) is synchronized across the entire universe, even when dealing with assets that have different trading lifespans or missing bars.</li>
+<li><strong>Prevention of Cross-Asset Leakage</strong>: By maintaining the asset identity at the index level, the Purging and Embargo mechanisms can precisely identify which specific observations must be removed without destroying the integrity of the rest of the universe.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># The finml-core Standard for Data Integrity</span>
+<span class="c1"># High-level example of index setting:</span>
+<span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">MultiIndex</span><span class="o">.</span><span class="n">from_tuples</span><span class="p">(</span><span class="n">tuples</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">,</span> <span class="s1">&#39;Ticker&#39;</span><span class="p">])</span>
+</code></pre></div>
+<hr />
+<h2 id="core-engines-architectural-modules">⚙️ Core Engines &amp; Architectural Modules</h2>
+<p>The framework is organized into specialized engines, each designed to solve a specific challenge in the Financial ML pipeline. While they can be used independently, they are seamlessly orchestrated by the <strong>DatasetGenerator</strong>.</p>
+<h3 id="1-the-data-factory-architecture-datasetgenerator">1. <strong>The Data Factory Architecture</strong> <a href="reference/pipelines/data_factory/"><code>DatasetGenerator</code></a></h3>
+<p>The central nervous system of the library, abstracting the complexity of the entire pipeline into a unified interface.</p>
+<ul>
+<li><strong>Dual-Mode Operation</strong>: Supports <strong>Provider Mode</strong> for automated fetching via integrated APIs (e.g., <code>yfinance</code>) and <strong>Custom Mode</strong> for ingesting user-provided DataFrames.</li>
+<li><strong>Validation &amp; Integrity</strong>: Acts as a final gatekeeper, validating <strong>MultiIndex</strong> geometry and ensuring that features and labels are perfectly synchronized in time before model ingestion.</li>
+</ul>
+<h3 id="2-market-data-loader-marketdataloader">2. <strong>Market Data Loader</strong> <a href="reference/data/loader/"><code>MarketDataLoader</code></a></h3>
+<p>The abstraction layer for rigorous data acquisition.</p>
+<ul>
+<li><strong>Unified Schema</strong>: Translates heterogeneous data from various providers into a consistent internal format, eliminating "Garbage In, Garbage Out" at the source.</li>
+<li><strong>Market Context</strong>: Integrated with market calendars to handle session gaps and holidays, ensuring the dataset reflects actual trading reality.</li>
+</ul>
+<h3 id="3-the-sanitization-engine-datacleaner">3. The Sanitization Engine <a href="reference/processing/cleaning/"><code>DataCleaner</code></a></h3>
+<p>Financial data is noisy and prone to leakage. This engine enforces a <strong>Strict Sanitization Protocol</strong>.</p>
+<ul>
+<li><strong>Bidirectional Trimming</strong>: Automatically manages the "warm-up" period required for technical indicators and the "look-ahead" horizon required for future labels.</li>
+<li><strong>Arrow of Time Integrity</strong>: Implements conservative forward-filling to handle liquidity gaps without introducing future information.</li>
+</ul>
+<h3 id="4-feature-engineering-featuregenerator">4. Feature Engineering <a href="reference/processing/features/"><code>FeatureGenerator</code></a></h3>
+<p>Moves beyond simple technical analysis to create <strong>Statistically Sound Features</strong>.</p>
+<ul>
+<li><strong>Multi-Lag Expansion</strong>: Automatically generates temporal sequences (lags) for every feature to capture market memory and autocorrelation.</li>
+<li><strong>Relative Intelligence</strong>: Enables features to be calculated relative to a benchmark (e.g., an ETF), isolating idiosyncratic asset performance from broader market noise.</li>
+</ul>
+<h3 id="5-structural-labeling-triplebarrierlabeling">5. Structural Labeling <a href="reference/processing/labeling/"><code>TripleBarrierLabeling</code></a></h3>
+<p>A path-dependent labeling engine that respects the reality of institutional risk management.</p>
+<ul>
+<li><strong>Dynamic Boundaries</strong>: Uses realized volatility to set adaptive take-profit and stop-loss barriers.</li>
+<li><strong>Holding Constraints</strong>: Implements vertical barriers (time-limits) to account for the cost of capital and opportunity costs.</li>
+</ul>
+<h3 id="6-model-selection-purgedkfold">6. Model Selection <a href="reference/model_selection/split/"><code>PurgedKFold</code></a></h3>
+<p>Our safeguard against the "Overfitting Trap" in non-IID financial data.</p>
+<ul>
+<li><strong>Leakage Prevention</strong>: Implements <strong>Purging</strong> to remove training observations whose labels overlap with the test set's timeframe.</li>
+<li><strong>Memory Embargo</strong>: Applies a <strong>Quarantine Zone</strong> (Embargo) after the test set to neutralize the effects of slow-decaying serial correlation.</li>
+</ul>
+<hr />
+<h3 id="getting-started">🚀 Getting Started</h3>
+<p>To ensure a clean and reproducible environment, follow these steps:</p>
+<h4 id="1-setup-environment">1. Setup Environment</h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Create a virtual environment</span>
+python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>venv
+
+<span class="c1"># Activate it (Windows)</span>
+venv<span class="se">\S</span>cripts<span class="se">\a</span>ctivate
+
+<span class="c1"># Activate it (Mac/Linux)</span>
+<span class="nb">source</span><span class="w"> </span>venv/bin/activate
+</code></pre></div>
+<h4 id="2-installation">2. Installation</h4>
+<p>First, install the framework directly from the source. This will automatically trigger the installation of core dependencies defined in <code>pyproject.toml</code>:</p>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>git+<span class="o">[</span>https://github.com/PPuertos/financial-ml-core.git<span class="o">](</span>https://github.com/PPuertos/financial-ml-core.git<span class="o">)</span>
+</code></pre></div>
+<details>
+<summary><b>🛠️ Are you a developer or planning to collaborate?</b></summary>
+<br>
+If you want to contribute to the project, run tests, or modify the source code, install the full development requirements to ensure you have all necessary tooling (like pytest and setuptools):
+<br><br>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># Install additional tools for development and testing</span>
+pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+</code></pre></div>
+</details>
+
+<hr />
+<h2 id="usage-example-basic-financial-ml-pipeline">🧪 Usage Example: Basic Financial ML Pipeline</h2>
+<p>The following example demonstrates the complete workflow: from automated
+Multi-Asset Ingestion and Feature Engineering (including temporal lags) to
+Triple Barrier Labeling and rigorous Sanitization. The result is a
+production-ready dataset, free from look-ahead bias and numerical instability.</p>
+<p>This library provides the essential Purged Cross-Validation engines required
+to tune any Scikit-Learn model without falling into the "overfitting trap"
+caused by serial correlation, ensuring that your model's performance is
+statistically grounded.</p>
+<h3 id="1-orchestrating-the-data-factory">1. Orchestrating the Data Factory</h3>
+<p>The <code>DatasetGenerator</code> is the core orchestrator that handles ingestion,
+sanitization, feature engineering, and labeling in a single synchronized flow.</p>
+<h4 id="automated-ingestion">Automated Ingestion</h4>
+<p>In its simplest form, you only need to specify your tickers and the data source
+(from supported <a href="reference/config/providers/"><code>PROVIDERS</code></a>).
+The framework will use institutional-grade defaults for feature engineering and labeling.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">finml_core.pipelines.data_factory</span> <span class="kn">import</span> <span class="n">DatasetGenerator</span>
+
+<span class="c1"># 1. Initialize with automated provider (yfinance)</span>
+<span class="n">generator</span> <span class="o">=</span> <span class="n">DatasetGenerator</span><span class="p">(</span><span class="n">data_source</span><span class="o">=</span><span class="s1">&#39;yfinance&#39;</span><span class="p">)</span>
+
+<span class="c1"># 2. Run the pipeline</span>
+<span class="c1"># This automatically handles fetching, cleaning, indicators, and TBM labels</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">generator</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+    <span class="n">tickers</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;AAPL&#39;</span><span class="p">,</span> <span class="s1">&#39;MSFT&#39;</span><span class="p">,</span> <span class="s1">&#39;GOOGL&#39;</span><span class="p">],</span> 
+    <span class="n">etf_reference</span><span class="o">=</span><span class="s1">&#39;^GSPC&#39;</span><span class="p">,</span> 
+    <span class="n">start_date</span><span class="o">=</span><span class="s1">&#39;2020-01-01&#39;</span>
+<span class="p">)</span>
+</code></pre></div>
+<details> <summary><b>📂 Advanced: Using your own Custom Dataset</b></summary>
+
+If you already have a dataset (e.g., from a local CSV or database), you can
+inject it directly. The only requirement is that your DataFrame must follow the
+<b>MultiIndex [Date, Ticker]</b> geometry.
+
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">finml_core.pipelines.data_factory</span> <span class="kn">import</span> <span class="n">DatasetGenerator</span>
+
+<span class="c1"># Assume &#39;my_df&#39; is a MultiIndex DataFrame with OHLCV columns</span>
+
+<span class="c1"># Specifying dataset structure</span>
+<span class="n">custom_provider</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;col_map&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;open&#39;</span><span class="p">:</span> <span class="s1">&#39;Open&#39;</span><span class="p">,</span> <span class="s1">&#39;high&#39;</span><span class="p">:</span> <span class="s1">&#39;High&#39;</span><span class="p">,</span> <span class="s1">&#39;low&#39;</span><span class="p">:</span> <span class="s1">&#39;Low&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;close&#39;</span><span class="p">:</span> <span class="s1">&#39;Close&#39;</span><span class="p">,</span> <span class="s1">&#39;volume&#39;</span><span class="p">:</span> <span class="s1">&#39;Volume&#39;</span>
+    <span class="p">},</span>
+    <span class="s1">&#39;ticker_level&#39;</span><span class="p">:</span> <span class="s1">&#39;Ticker&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;date_level&#39;</span><span class="p">:</span> <span class="s1">&#39;Date&#39;</span>
+<span class="p">}</span>
+
+<span class="n">generator</span> <span class="o">=</span> <span class="n">DatasetGenerator</span><span class="p">(</span>
+    <span class="n">custom_provider</span><span class="o">=</span><span class="n">custom_provider</span>
+<span class="p">)</span>
+
+<span class="c1"># Pass your DataFrame directly to the run method</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">generator</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">custom_data</span><span class="o">=</span><span class="n">my_df</span><span class="p">)</span>
+</code></pre></div>
+</details>
+
+<h3 id="2-statistical-split-purging-embargo">2. Statistical Split (Purging &amp; Embargo)</h3>
+<p>Standard random splits or naive chronological splits are insufficient in finance.
+Because our labels (via TBM) have a time duration (from <span class="arithmatex">\(t_0\)</span> to <span class="arithmatex">\(t_1\)</span>),
+training and testing observations can overlap, causing <strong>information leakage</strong>. </p>
+<p>We use <a href="reference/model_selection/split/"><code>purged_train_test_split</code></a> to
+execute a rigorous separation:</p>
+<ul>
+<li><strong>Purging</strong>: Removes training samples whose evaluation period overlaps with the test set.</li>
+<li><strong>Embargo</strong>: Adds a "quarantine" buffer immediately after the test set to neutralize any residual serial correlation (market memory).</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">finml_core.model_selection.split</span> <span class="kn">import</span> <span class="n">purged_train_test_split</span>
+
+<span class="c1"># analysis_data contains the &#39;t1&#39; (label end dates) generated by the TBM engine</span>
+<span class="c1"># which is essential to identify the overlap periods.</span>
+<span class="n">analysis_data</span> <span class="o">=</span> <span class="n">generator</span><span class="o">.</span><span class="n">analysis_data</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">purged_train_test_split</span><span class="p">(</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span>
+    <span class="n">t1</span><span class="o">=</span><span class="n">analysis_data</span><span class="p">[</span><span class="s1">&#39;t1&#39;</span><span class="p">],</span>
+    <span class="n">date_level</span><span class="o">=</span><span class="s1">&#39;Date&#39;</span><span class="p">,</span>    <span class="c1"># Level of the MultiIndex used for time</span>
+    <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+    <span class="n">pct_embargo</span><span class="o">=</span><span class="mf">0.01</span>      <span class="c1"># 1% embargo to handle long-memory effects</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Train samples: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span><span class="si">}</span><span class="s2"> | Test samples: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="3-leakage-free-validation-purged-k-fold">3. Leakage-Free Validation (Purged K-Fold)</h3>
+<p>Standard Cross-Validation assumes that observations are independent and
+identically distributed (I.I.D.). In finance, this assumption is false.
+To evaluate a model or prepare for hyperparameter tuning without "lying" to
+ourselves, we implement <code>PurgedKFold</code>. </p>
+<p>This cross-validator acts as a drop-in replacement for Scikit-Learn's K-Fold,
+ensuring that every training fold is mathematically isolated from the validation
+set by respecting the temporal overlap of labels.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">finml_core.model_selection.split</span> <span class="kn">import</span> <span class="n">PurgedKFold</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># 1. Create the Purged Cross-Validator using the training &#39;t1&#39; dates.</span>
+<span class="c1"># This ensures that each fold is separated by purging and an embargo period.</span>
+<span class="n">purged_cv</span> <span class="o">=</span> <span class="n">PurgedKFold</span><span class="p">(</span>
+    <span class="n">n_splits</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">t1</span><span class="o">=</span><span class="n">analysis_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">X_train</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="s1">&#39;t1&#39;</span><span class="p">],</span>
+    <span class="n">date_level</span><span class="o">=</span><span class="s1">&#39;Date&#39;</span><span class="p">,</span>
+    <span class="n">pct_embargo</span><span class="o">=</span><span class="mf">0.01</span>
+<span class="p">)</span>
+
+<span class="c1"># 2. Define your model (e.g., RandomForest)</span>
+<span class="n">rf_model</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># 3. Compute scores using the Purged CV engine.</span>
+<span class="c1"># This setup is also compatible with sklearn.model_selection.GridSearchCV.</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span>
+    <span class="n">rf_model</span><span class="p">,</span> 
+    <span class="n">X_train</span><span class="p">,</span> 
+    <span class="n">y_train</span><span class="p">,</span> 
+    <span class="n">cv</span><span class="o">=</span><span class="n">purged_cv</span><span class="p">,</span> 
+    <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;accuracy&#39;</span><span class="p">,</span>
+    <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Purged CV Accuracy: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span><span class="si">:</span><span class="s2">.2%</span><span class="si">}</span><span class="s2"> (+/- </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<h2 id="license-ethical-note">⚖️ License &amp; Ethical Note</h2>
+<p>This project is licensed under the MIT License. <strong>FinML-Core</strong> is an open-source contribution to the quantitative finance community. It is designed for research and educational purposes. Always remember: <em>Backtesting is not forecasting, and past performance does not guarantee future results.</em></p>
+<hr />
+<h2 id="why-finml-core">🏛️ Why FinML-Core?</h2>
+<ul>
+<li><strong>Integrity First</strong>: Every line of code is written to prevent data leakage, the #1 killer of financial ML models.</li>
+<li><strong>Built for Production</strong>: Unlike fragmented notebooks, this is a structured library with modular engines.</li>
+<li><strong>Theoretical Rigor</strong>: We don't just "fit models"; we follow the path-dependent nature of financial markets as defined by the industry's leading researchers.</li>
+</ul>
+<hr />
+<h2 id="references">📚 References</h2>
+<ul>
+<li>López de Prado, M. (2018). <em>Advances in Financial Machine Learning</em>. Wiley.</li>
+</ul>
+<hr />
+<div align="center" style="margin-top: 50px;">
+  <p style="margin-bottom: 15px; font-weight: bold; color: #555; font-family: sans-serif;">
+    Developed with passion and mathematical rigor by
+  </p>
+
+  <a href="https://www.linkedin.com/in/francisco-puertos-rumayor/" 
+     target="_blank" 
+     style="display: inline-flex; 
+            align-items: center; 
+            background-color: #0077b5; 
+            color: white; 
+            padding: 10px 20px; 
+            text-decoration: none; 
+            border-radius: 4px; 
+            font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Fira Sans', Ubuntu, Oxygen, 'Oxygen Sans', Cantarell, 'Droid Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Lucida Grande', Helvetica, Arial, sans-serif; 
+            font-weight: 600;
+            font-size: 16px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            transition: background-color 0.2s ease, box-shadow 0.2s ease;">
+
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="white" style="margin-right: 10px;">
+      <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-1.337-.025-3.062-1.865-3.062-1.867 0-2.153 1.459-2.153 2.966v5.7h-3v-11h2.88v1.503h.04c.401-.76 1.381-1.56 2.841-1.56 3.039 0 3.601 2.001 3.601 4.602v5.455z"/>
+    </svg>
+
+    Francisco Puertos Rumayor
+  </a>
+</div>
+
+<hr />
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.expand", "navigation.top", "toc.follow", "content.code.copy", "toc.integrate"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.0/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
