@@ -129,7 +129,7 @@ class DatasetGenerator:
         self.feature_selection = feature_selection
         
         # Initialize components
-        if self.custom_user_input == False:
+        if self.custom_user_input:
             self.loader = None
         else:
             self.loader = MarketDataLoader(source=data_source)
