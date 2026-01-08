@@ -1,0 +1,83 @@
+  palette: 
+    # Dark Mode (Slate)
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+    # Light Mode (Default)
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+theme:
+  name: material
+  palette:
+    # Mode Dark (Deep Work Mode)
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: deep orange # Un acento sutil o cambia a 'teal' para el Emerald
+      accent: indigo
+    # Mode Light (Temple Mode)
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: blue grey
+      accent: deep purple
+
+
+  palette: 
+      # Dark Mode (Deep Coffee/Slate)
+      - scheme: slate
+        primary: deep orange
+        accent: deep orange
+        toggle:
+          icon: material/brightness-4
+          name: Switch to light mode
+      # Light Mode (Ivory/Sand)
+      - scheme: default
+        primary: deep orange
+        accent: deep orange
+        toggle:
+          icon: material/brightness-7
+          name: Switch to dark mode
+
+
+
+
+  palette: 
+    # Dark Mode (Deep Slate & Stone)
+    # El contraste del 'amber' sobre 'slate' crea un vibe de "Antorcha en el Templo"
+    - scheme: slate
+      primary: amber
+      accent: amber
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+    # Light Mode (Marble & Sand)
+    # 'brown' en modo light genera tonos tierra suaves y elegantes
+    - scheme: default
+      primary: brown
+      accent: brown
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+  palette: 
+    # Modo Dark (Piedra Cálida)
+    - scheme: slate
+      primary: orange
+      accent: orange
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+    # Modo Light (Mármol Arena Claro)
+    - scheme: default
+      primary: orange
+      accent: orange
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode

@@ -1,0 +1,92 @@
+site_name: Financial ML Core
+theme:
+  name: material
+  logo: assets/logo_light.png
+  favicon: assets/logo_light.ico
+  language: en
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - toc.follow
+    - content.code.copy
+    - toc.integrate
+  palette: 
+    # Dark Mode (Slate)
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+    # Light Mode (Default)
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+nav:
+  - Home: index.md
+  - ⚙️ Infrastructure:
+      - Data Factory: reference/pipelines/data_factory.md
+  - 🌐 Data Access:
+    - Loader: reference/data/loader.md
+    - Providers: reference/config/providers.md
+  - 🧪 Model Selection:
+      - Cross-Validation & Splitting: reference/model_selection/split.md
+  - 💻 Data Processing:
+      - Data Cleaning: reference/processing/cleaning.md
+      - Feature Engineering: reference/processing/features.md
+      - Financial Labeling: reference/processing/labeling.md
+  - 📈 Metrics & Indicators:
+      - Technical Statistics: reference/metrics/statistics.md
+      - Financial Indicators: reference/metrics/indicators.md
+      - Performance Evaluation: reference/metrics/performance.md
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          paths: ["."]
+          options:
+            # --- Heading & Navigation ---
+            show_root_heading: true       # Displays the class or module name as the main title
+            show_root_toc_entry: true     # Adds the class name to the right-hand Table of Contents
+            
+            # --- Content Visibility ---
+            show_if_not_docstring: true   # Shows the function signature even if it lacks a docstring
+            show_source: false            # HIDES the raw source code (prevents easy plagiarism/misuse)
+            filters: ["!^_"]              # HIDES private methods (those starting with an underscore)
+            
+            # --- Layout & Formatting ---
+            merge_init_into_class: true   # Merges __init__ documentation directly into the class description
+            docstring_style: google       # Parses Google-style docstrings (Args, Returns, Raises)
+            group_by_category: true       # Organizes members into "Attributes" and "Methods" groups
+            show_category_heading: false   # Displays the subheadings for those categories
+            
+            # --- Engine Configuration ---
+            preload_modules: [finml_core] # Pre-loads your library to ensure cross-references work
+
+markdown_extensions:
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.superfences:
+  - pymdownx.details:
+  - pymdownx.magiclink:
+  - admonition:
+  - pymdownx.snippets:
+  - attr_list                    # To use {.md-button}
+  - pymdownx.emoji:              # Permite usar íconos de octicons/simple
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+
+extra_javascript:
+  - https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.0/es5/tex-mml-chtml.js
+
+watch:
+  - finml_core  # <--- Esto obliga al servidor a reiniciarse si cambia el código
+  - docs
