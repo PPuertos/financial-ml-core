@@ -75,8 +75,8 @@ class DataCleaner:
         df_clean = df.copy()
 
         # Validations before computing
-        validate_ticker_level(self.ticker_level)
-        validate_date_level(self.date_level)
+        validate_ticker_level(self.ticker_level, df_clean)
+        validate_date_level(self.date_level, df_clean)
 
         # First Step: Trim Edges if needed. Else return dataset
         if df_clean.isnull().values.any():

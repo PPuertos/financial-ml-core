@@ -4,6 +4,12 @@ import pandas as pd
 
 def validate_col_map(col_map: Dict[str, str]):
     """Ensures the dictionary keys are part of the supported OHLCV schema."""
+    # Validar que col_map sea dict
+    if not isinstance(col_map, dict):
+        raise ValueError(
+            "col_map must be a dictionary (e.g., {'open':'Open', 'volume':'Volume'})"
+        )
+
     # Default mapping
     col_map_keys = ['open', 'high', 'low', 'close', 'volume']
     

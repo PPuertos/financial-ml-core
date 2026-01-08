@@ -1,6 +1,7 @@
 # Importing External Libraries
 import pandas as pd
 from typing import List, Dict, Any, Optional, Tuple
+import warnings
 
 # Importing Local Modules
 from ..data.loader import MarketDataLoader
@@ -8,7 +9,9 @@ from ..processing.cleaning import DataCleaner
 from ..processing.features import FeatureGenerator
 from ..processing.labeling import TripleBarrierLabeling
 from ..config.providers import PROVIDERS
-from ..utils.validation import validate_df_columns
+from ..utils.validation import (
+    validate_df_columns, validate_col_map
+)
 
 class DatasetGenerator:
     """
@@ -39,7 +42,7 @@ class DatasetGenerator:
 
     def __init__(
         self,
-        data_source: str = 'yfinance',
+        data_source: str = None,
         custom_provider: Optional[Dict[str, Any]] = None,
         feature_config: Optional[Dict[str, Dict[str, Any]]] = None,
         feature_selection: Optional[Dict[str, List[int]]] = None,
@@ -100,20 +103,25 @@ class DatasetGenerator:
 
         ---
         """
-        if custom_provider:
+        # Warning or error message
+        self._class_instance_warnings(data_source, custom_provider)
+
+        if custom_provider is not None:
+            # Validating users input
+            self._validate_custom_provider(custom_provider)
+
+            # Validate col_map
+            validate_col_map(custom_provider.get('col_map'))
+
             provider = custom_provider
 
             self.custom_user_input = True
         else:
+            # Validate users input
+            self._validate_data_source(data_source)
+
             # PROVIDER'S INFO
             provider = PROVIDERS.get(data_source)
-
-            if not provider:
-                raise KeyError(
-                    f"Provider '{data_source}' not found."
-                    "Provide 'custom_provider' dict or select a supported"
-                    f"provider: {PROVIDERS.keys()}"
-                )
             
             self.custom_user_input = False
         
@@ -209,13 +217,16 @@ class DatasetGenerator:
                 that $X$ and $y$ contain only fully realized, non-null observations 
                 ready for machine learning.
         """
+        # Validating Ambiguity or Not provided params
+        self._validate_run_user_params(
+            tickers,
+            etf_reference,
+            start_date,
+            df_input
+        )
+
         # priotitizing custom provider if user provided it
-        if self.custom_user_input == True:
-            if df_input is None:
-                raise KeyError(
-                    "Provided 'custom_provider' parameter when instantiating "
-                    "class, must provide 'df_input'"
-                )
+        if self.custom_user_input:
             
             # Validating if users column mappings are in the df columns
             validate_df_columns(df_input, self.col_map)
@@ -235,6 +246,12 @@ class DatasetGenerator:
         # Validate not inf's and not nan's
         df_raw_clean = self.cleaner.validate_and_clean(df_raw)
 
+        if df_raw_clean.shape[0] == 0:
+            raise ValueError(
+                "The cleaning process eliminated all of the rows. "
+                f"(initial_rows={df_raw.shape[0]}, final_rows=0) "
+                "Check for full NaN columns, or large NaN periods."
+            )
 
         print("--- 2. Generating Features (X) ---")
         # Calculate financial metrics
@@ -276,3 +293,152 @@ class DatasetGenerator:
 
         print(f"--- Pipeline Finished. Final Dataset: {X_clean.shape[0]} rows ---")
         return X_clean, y_clean
+    
+    def _class_instance_warnings(
+        self,
+        data_source: str = None,
+        custom_provider: dict = None
+    ):
+        """
+        Validates the data source configuration and triggers warnings or errors
+        to ensure the pipeline has a clear data ingestion path.
+        """
+        
+        # CASE 1: Both provided - Ambiguity resolution
+        # Logic: Prioritizes Custom Mode if both are present.
+        if data_source is not None and custom_provider is not None:
+            warnings.warn(
+                "Ambiguity detected: Both `custom_provider` and `data_source` were provided. "
+                "The `custom_provider` logic will take precedence (Custom Mode). "
+                "\nNote: You must provide a `df_input` DataFrame when calling the `run()` method.",
+                UserWarning,
+                stacklevel=2
+            )
+        
+        # CASE 2: None provided - Critical failure
+        # Logic: Forces the user to choose at least one ingestion path.
+        if data_source is None and custom_provider is None:
+            raise ValueError(
+                "Configuration Error: You must specify either a `data_source` (for Automated Mode) "
+                "or a `custom_provider` dictionary (for Custom Mode). "
+                "\n\n--- [Custom Mode requirements] ---"
+                "\n - Init: custom_provider = {'col_map': dict, 'ticker_level': str, 'date_level': str}"
+                "\n - run(): Must provide `df_input` (pd.DataFrame)."
+                "\n\n--- [Automated Mode requirements] ---"
+                "\n - Init: data_source = 'yfinance' (or supported provider)."
+                "\n - run(): Must provide `tickers` (list), `etf_reference` (str), and `start_date` (str). "
+                "`end_date` (str) is optional."
+        )
+
+    def _validate_custom_provider(self, custom_provider:dict):
+        if not isinstance(custom_provider, dict):
+            raise KeyError(
+                f"Invalid 'custom_provider' value provided: '{custom_provider}'. "
+                "param must be a dict containing {'col_map': dict, 'ticker_level': str, 'date_level': str}"
+            )
+
+        # level 1: Validate invalid user keys
+        expected_keys = ['col_map', 'ticker_level', 'date_level']
+
+        invalid_user_keys = [
+            key for key in custom_provider.keys()
+            if key not in expected_keys
+        ]
+
+        if invalid_user_keys:
+            raise TypeError(
+                f"Invalid 'custom_provider' keys: {invalid_user_keys}"
+                f"Valid 'custom_provider' keys: {expected_keys}" 
+            )
+        
+        # level 2: Validate missing mandatory user keys
+        missing_user_keys = [
+            key for key in expected_keys
+            if key not in custom_provider.keys()
+        ]
+
+        if missing_user_keys:
+            raise TypeError(
+                f"Missing mandatory 'custom_provider' keys: {missing_user_keys}" 
+            )
+        
+    def _validate_data_source(self, data_source:str):
+        if not isinstance(data_source, str):
+            raise TypeError(
+                f"Invalid `data_source` parameter provided: {data_source} "
+                f"`data_source` value must be str. Current supported values "
+                f"(providers): {list(PROVIDERS.keys())}"
+            )
+        
+        if data_source not in PROVIDERS.keys():
+            raise KeyError(
+                f"Invalid 'data_source' provided: {data_source}"
+                f"Current supported providers: {list(PROVIDERS.keys())}"
+            )
+        
+    def _validate_run_user_params(
+        self,
+        tickers: Optional[List[str]] = None,
+        etf_reference: Optional[str] = None,
+        start_date: Optional[str] = None,
+        df_input: Optional[pd.DataFrame] = None
+    ):
+        automated_inputs = {
+                'tickers': tickers,
+                'etf_reference': etf_reference,
+                'start_date': start_date
+            }
+
+        # 1. Validate mandatory inputs are provided by user
+        if self.custom_user_input:
+            # 1. Check for Ambiguity from Automated Mode params provided by user
+            # Automated Mode inputs provided
+            automated_provided_inputs = [
+                name for name, val in automated_inputs.items()
+                if val is not None
+            ]
+            
+            # Validating if Automated mode params where not provided.
+            if automated_provided_inputs:
+                warnings.warn(
+                    "Ambiguity detected: Automated Mode parameters " 
+                    f"were provided: {automated_provided_inputs}, "
+                    "But custom Mode is active (from __init__ "
+                    "`custom_provider` input). These will be ignored.",
+                    UserWarning,
+                    stacklevel=2
+                )
+
+            # Validating Mandatory Custom Mode input
+            if df_input is None:
+                raise ValueError(
+                    "'df_input' parameter not provided. It is mandatory to proceed " 
+                    "with Custom Mode"
+                )
+        else:
+            # Automated Mode inputs not provided
+            automated_missing_inputs = [
+                name for name, val in automated_inputs.items()
+                if val is None
+            ]
+
+            # Warning if user provided `df_input`
+            if df_input is not None:
+                warnings.warn(
+                    "Ambiguity detected: `df_input` Custom Mode parameter " 
+                    f"was provided, But custom Mode is active "
+                    "(from __init__ `data_source` input). It will be ignored.",
+                    UserWarning,
+                    stacklevel=2
+                )
+
+            if automated_missing_inputs:
+                raise KeyError(
+                    f"Missing mandatory Automated Mode params: {automated_missing_inputs}."
+                )
+        
+# Instanciamiento de clase
+# data_source & custom_provider          # Warning
+# data_source & not custom_provider      # Valid
+# not data_source & custom_provider      # Valid
+# not data_source & not custom_provider  # Error
