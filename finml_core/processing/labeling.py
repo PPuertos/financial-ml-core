@@ -104,7 +104,7 @@ class TripleBarrierLabeling:
         self,
         df: pd.DataFrame
     ) -> pd.DataFrame:
-        """
+        r"""
         Executes the Triple Barrier labeling process across all assets.
 
         This method orchestrates the full pipeline:

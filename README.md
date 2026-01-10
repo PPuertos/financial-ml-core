@@ -9,7 +9,7 @@
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-informational?logo=linkedin)](https://www.linkedin.com/in/francisco-puertos-rumayor/)
 
 ---
-**`finml-core`** is not just a tool for building models; it is a framework built from first principles to handle the inherent "uncertainty" of financial data. This library was born from the necessity to understand the mechanics of high-level quantitative finance, moving beyond simple API calls to engineer a system that respects the statistical nature of market series.
+**`finml-core`** is not just a tool for building models, it is a framework built from first principles to handle the inherent "uncertainty" of financial data. This library was born from the necessity to understand the mechanics of high-level quantitative finance, moving beyond simple API calls to engineer a system that respects the statistical nature of market series.
 
 ## 🔬 First-Principles Engineering
 
@@ -18,13 +18,13 @@ In Quantitative Finance, the "how" is irrelevant if the "why" is flawed. Most fa
 This library addresses these gaps by focusing on three architectural pillars:
 
 ### 1. The Multi-Asset Coordinate System
-Financial data is 3-dimensional (Time, Asset, Feature). Instead of flattening this complexity, **FinML-Core** uses a strict **MultiIndex (Date, Ticker)** architecture. This ensures that every operation—from technical indicators to data cleaning—is aware of its asset-specific context, preventing cross-asset data leakage.
+Financial data is 3-dimensional (Time, Asset, Feature). Instead of flattening this complexity, **`finml-core`** uses a strict **MultiIndex (Date, Ticker)** architecture. This ensures that every operation—from technical indicators to data cleaning—is aware of its asset-specific context, preventing cross-asset data leakage.
 
 ### 2. Automated Ingestion & Standardization
 Before processing, data must be governed. Our **Market Data Loader** acts as a unified abstraction layer. By leveraging a centralized **Providers Registry**, it translates heterogeneous external APIs into a consistent internal schema. This eliminates the "Garbage In, Garbage Out" problem by enforcing alignment between tickers and market calendars from the very first step.
 
 ### 3. The Sanitization Protocol
-Data gaps in finance are not just "missing values"; they are signals of market closures or liquidity issues. Our `DataCleaner` doesn't just fill holes; it executes a **Strict Sanitization Protocol**:
+Data gaps in finance are not just "missing values", they are signals of market closures or liquidity issues. Our `DataCleaner` doesn't just fill holes, it executes a **Strict Sanitization Protocol**:
 * **Bidirectional Trimming**: Managing warm-up periods (for indicators) and horizon gaps (for labels) to ensure every training row is statistically valid.
 * **Conservative Filling**: Forward-filling with strict limits to respect the arrow of time and avoid look-ahead bias.
 
@@ -51,20 +51,27 @@ To ensure a clean and reproducible environment, follow these steps:
 #### 1. Setup Environment
 ```bash
 # Create a virtual environment
+# Windows
 python -m venv venv
+# MacOS/Linux
+python3 -m venv venv
 
-# Activate it (Windows)
-venv\Scripts\activate
-
-# Activate it (Mac/Linux)
-source venv/bin/activate
+# Activate it
+# Windows
+venv\Scripts\activae
+# MacOS/Linux
+source venv/bin/Activate
 ```
 
 #### 2. Installation
 First, install the framework directly from the source. This will automatically trigger the installation of core dependencies defined in `pyproject.toml`:
 
 ```bash
-pip install git+[https://github.com/PPuertos/financial-ml-core.git](https://github.com/PPuertos/financial-ml-core.git)
+# Intall financial-ml-core library
+# Windows
+python -m pip install git+https://github.com/PPuertos/financial-ml-core.git
+# MacOS/Linux
+python3 -m pip install git+https://github.com/PPuertos/financial-ml-core.git
 ```
 
 <details>
@@ -74,8 +81,16 @@ If you want to contribute to the project, run tests, or modify the source code, 
 <br><br>
 
 ```bash
-# Install additional tools for development and testing
-pip install -r requirements.txt
+# 1. Clone the repository
+git clone https://github.com/PPuertos/financial-ml-core.git
+cd financial-ml-core
+
+# 2. Install in editable mode with development dependencies
+# Windows
+python -m pip install -e ".[dev]"
+
+# MacOS/Linux
+python3 -m pip install -e ".[dev]"
 ```
 </details>
 
@@ -83,20 +98,20 @@ pip install -r requirements.txt
 The `DatasetGenerator` orchestrates the entire pipeline. Transform raw tickers into a production-ready dataset with a single call:
 
 ```python
+# --- AUTOMATED MODE ---
 from finml_core.pipelines.data_factory import DatasetGenerator
 from finml_core.model_selection.split import purged_train_test_split
 
-# 1. Define your universe and parameters
-generator = DatasetGenerator(
-    tickers=['AAPL', 'MSFT', 'GOOGL'],
-    etf='^GSPC',                
-    start='2020-01-01',       
-    end='2023-12-31'
-)
+# 1. Input `data_source` parameter refering to the provider
+generator = DatasetGenerator(data_source='yfinance')
 
 # 2. Execute the pipeline
 # Automatically handles Ingestion, Sanitization, Features, and Labeling
-X, y = generator.create_dataset()
+X, y = generator.run(
+    tickers=['AAPL', 'MSFT', 'GOOGL'],
+    etf_reference='^GSPC',
+    start_date='2018-01-01'
+)
 
 # 3. Extracting t1 (label end dates for Purged CV)
 analysis_data = generator.analysis_data
@@ -105,10 +120,12 @@ t1 = analysis_data['t1']
 # 4. Split Data into Train & Test (Purged & Embargoed)
 X_train, y_train, X_test, y_test = purged_train_test_split(
     X, y, t1, 
-    date_column='Date'
+    date_level='Date',
+    test_size=.2
 )
 
-print(f"Train size: {X_train.shape} | Test size: {X_test.shape}")
+print(f"\nTrain size: {X_train.shape} | Test size: {X_test.shape}")
+print(f"Purging + Embargo dates = {X.shape[0] - X_train.shape[0] - X_test.shape[0]}")
 ```
 ---
 

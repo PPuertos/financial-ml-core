@@ -91,7 +91,7 @@ def _apply_embargo(
 
 
 class PurgedKFold():
-    """
+    r"""
     Cross-Validation with Purging and Embargo for Financial Time Series.
     
     Implements the methodology proposed by Marcos López de Prado in 

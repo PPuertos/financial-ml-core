@@ -436,9 +436,3 @@ class DatasetGenerator:
                 raise KeyError(
                     f"Missing mandatory Automated Mode params: {automated_missing_inputs}."
                 )
-        
-# Instanciamiento de clase
-# data_source & custom_provider          # Warning
-# data_source & not custom_provider      # Valid
-# not data_source & custom_provider      # Valid
-# not data_source & not custom_provider  # Error
