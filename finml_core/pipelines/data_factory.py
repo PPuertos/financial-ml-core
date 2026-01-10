@@ -195,7 +195,7 @@ class DatasetGenerator:
             etf_reference (str, optional): 
                 Reference symbol (e.g., '^GSPC') to align market holidays.
             start_date (str, optional): 
-                Start of the historical period (YYYY-MM-DD hh:mm:ss).
+                Start of the historical period (`YYYY-MM-DD hh:mm:ss`).
             end_date (str, optional): 
                 End of the period. Defaults to current date.
             df_input (pd.DataFrame, optional): 

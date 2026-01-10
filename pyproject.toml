@@ -1,26 +1,101 @@
+# ===========================
+# Build system configuration
+# ===========================
+# Needed for PEP 517/518: using modern setuptools
 [build-system]
 requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
+# ===========================
+# Project metadata
+# ===========================
 [project]
+# Package name (used for pip / PyPI)
 name = "finml-core"
-version = "0.1.2"
+
+# Current version (semantic versioning recommended)
+version = "0.1.3"
+
+# List of authors
 authors = [
   { name="Francisco Puertos Rumayor", email="paco_puertos11@hotmail.com" },
 ]
+
+# Short description
 description = "A first-principles framework for Financial Machine Learning."
-license = "MIT"
+
+# License
+license = { text = "MIT" }
+
+# Main README file
 readme = "README.md"
+
+# Python version requirement
 requires-python = ">=3.9"
-dependencies = [
-    "pandas>=2.3.3",
-    "numpy>=2.4.0",
-    "yfinance>=0.2.61",
-    "scikit-learn>=1.8.0",
-    "pandas-market-calendars>=4.1.0"
-    "mkdocs"
+
+# ===========================
+# Project URLs
+# ===========================
+[project.urls]
+Homepage = "https://github.com/PPuertos/financial-ml-core"
+Repository = "https://github.com/PPuertos/financial-ml-core"
+Issues = "https://github.com/PPuertos/financial-ml-core/issues"
+
+# ===========================
+# PyPI classifiers
+# ===========================
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "License :: OSI Approved :: MIT License",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+  "Topic :: Office/Business :: Financial",
 ]
 
+# ===========================
+# Runtime dependencies
+# ===========================
+dependencies = [
+    "pandas>=2.2.0",                 # DataFrames / data manipulation
+    "numpy>=1.26,<3.0",              # Numerical computing
+    "yfinance>=0.2.61",              # Download financial data
+    "scikit-learn>=1.5.0",           # Classic ML
+    "pandas-market-calendars>=4.0.0", # Financial market calendars
+    "joblib>=1.2.0"                  # Parallelization / serialization
+]
+
+# ===========================
+# Optional dependencies (extras)
+# ===========================
+[project.optional-dependencies]
+dev = [
+  "pytest",  # Testing
+  "black",   # Code formatter
+  "ruff",    # Linter
+]
+
+# Documentation dependencies
+docs = [
+  "mkdocs",             # Documentation generator
+  "mkdocs-material",    # Material theme
+  "mkdocstrings[python]", # Automatic Python docstrings
+]
+
+# Interactive / notebook dependencies
+interactive = [
+  "matplotlib",
+  "seaborn",
+  "jupyterlab",
+]
+
+# ===========================
+# Package discovery
+# ===========================
 [tool.setuptools.packages.find]
+# Include all subpackages that start with finml_core
 include = ["finml_core*"]
-exclude = ["misc*", "notebooks*"]
+
+# Exclude tests, notebooks, and miscellaneous folders
+exclude = ["misc*", "notebooks*", "tests*"]
