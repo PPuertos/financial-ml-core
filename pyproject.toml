@@ -58,10 +58,10 @@ classifiers = [
 # Runtime dependencies
 # ===========================
 dependencies = [
-    "pandas>=2.2.0",                 # DataFrames / data manipulation
-    "numpy>=1.26,<3.0",              # Numerical computing
-    "yfinance>=0.2.61",              # Download financial data
-    "scikit-learn>=1.5.0",           # Classic ML
+    "pandas>=2.0.0",                 # DataFrames / data manipulation
+    "numpy>=1.24.0",              # Numerical computing
+    "yfinance>=0.2.0",              # Download financial data
+    "scikit-learn>=1.3.0",           # Classic ML
     "pandas-market-calendars>=4.0.0", # Financial market calendars
     "joblib>=1.2.0"                  # Parallelization / serialization
 ]
