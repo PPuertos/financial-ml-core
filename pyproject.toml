@@ -25,7 +25,7 @@ authors = [
 description = "A first-principles framework for Financial Machine Learning."
 
 # License
-license = text = "MIT"
+license = "MIT"
 
 # Main README file
 readme = "README.md"
