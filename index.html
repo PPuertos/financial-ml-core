@@ -292,7 +292,7 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#financial-data-geometry" class="md-nav__link">
+  <a href="#the-philosophy-of-financial-data-geometry" class="md-nav__link">
     <span class="md-ellipsis">
       
         📐 The Philosophy of Financial Data Geometry
@@ -523,7 +523,7 @@
   <a href="#why-finml-core" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🏛️ Why FinML-Core?
+        🏛️ Why finml-core?
       
     </span>
   </a>
@@ -1165,8 +1165,8 @@
 <p>Rather than offering a collection of standard tools, <strong><code>finml-core</code></strong> provides a governed pipeline designed to prevent the most common pitfalls in Quantitative Finance—such as look-ahead bias, information leakage, and the misapplication of standard cross-validation to non-IID data.</p>
 <p><code>finml-core</code> is a high-performance Python library designed for quantitative researchers and financial engineers. It implements rigorous methodologies proposed by Marcos López de Prado in <em>"Advances in Financial Machine Learning"</em>, ensuring that ML models for trading are free from common pitfalls like look-ahead bias and serial correlation leakage.</p>
 <hr />
-<h2 id="financial-data-geometry">📐 The Philosophy of Financial Data Geometry</h2>
-<p>In Quantitative Finance, the data structure is not just a container; it is a <strong>Coordinate System</strong>. Most generic machine learning frameworks fail because they treat financial series as flat tables, ignoring the relationship between time and specific assets. </p>
+<h2 id="the-philosophy-of-financial-data-geometry">📐 The Philosophy of Financial Data Geometry</h2>
+<p>In Quantitative Finance, the data structure is not just a container, it is a <strong>Coordinate System</strong>. Most generic machine learning frameworks fail because they treat financial series as flat tables, ignoring the relationship between time and specific assets. </p>
 <p><strong><code>finml-core</code></strong> enforces a strict 3-dimensional perspective—<strong>Time × Asset × Feature</strong>—through its mandatory <strong>MultiIndex Architecture</strong>.</p>
 <h3 id="why-date-ticker-is-non-negotiable">Why [Date, Ticker] is Non-Negotiable</h3>
 <p>Financial time series are characterized by cross-sectional dependence and heterogeneous scales. By enforcing a <code>pd.MultiIndex</code> with <code>Date</code> and <code>Ticker</code> levels as the primary index, the framework achieves three critical objectives:</p>
@@ -1223,17 +1223,24 @@
 <p>To ensure a clean and reproducible environment, follow these steps:</p>
 <h4 id="1-setup-environment">1. Setup Environment</h4>
 <div class="highlight"><pre><span></span><code><span class="c1"># Create a virtual environment</span>
+<span class="c1"># Windows</span>
 python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>venv
+<span class="c1"># MacOS/Linux</span>
+python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>venv
 
-<span class="c1"># Activate it (Windows)</span>
-venv<span class="se">\S</span>cripts<span class="se">\a</span>ctivate
-
-<span class="c1"># Activate it (Mac/Linux)</span>
-<span class="nb">source</span><span class="w"> </span>venv/bin/activate
+<span class="c1"># Activate it</span>
+<span class="c1"># Windows</span>
+venv<span class="se">\S</span>cripts<span class="se">\a</span>ctivae
+<span class="c1"># MacOS/Linux</span>
+<span class="nb">source</span><span class="w"> </span>venv/bin/Activate
 </code></pre></div>
 <h4 id="2-installation">2. Installation</h4>
 <p>First, install the framework directly from the source. This will automatically trigger the installation of core dependencies defined in <code>pyproject.toml</code>:</p>
-<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>git+<span class="o">[</span>https://github.com/PPuertos/financial-ml-core.git<span class="o">](</span>https://github.com/PPuertos/financial-ml-core.git<span class="o">)</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Intall financial-ml-core library</span>
+<span class="c1"># Windows</span>
+python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>git+https://github.com/PPuertos/financial-ml-core.git
+<span class="c1"># MacOS/Linux</span>
+python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>git+https://github.com/PPuertos/financial-ml-core.git
 </code></pre></div>
 <details>
 <summary><b>🛠️ Are you a developer or planning to collaborate?</b></summary>
@@ -1241,8 +1248,16 @@ venv<span class="se">\S</span>cripts<span class="se">\a</span>ctivate
 If you want to contribute to the project, run tests, or modify the source code, install the full development requirements to ensure you have all necessary tooling (like pytest and setuptools):
 <br><br>
 
-<div class="highlight"><pre><span></span><code><span class="c1"># Install additional tools for development and testing</span>
-pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+<div class="highlight"><pre><span></span><code><span class="c1"># 1. Clone the repository</span>
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/PPuertos/financial-ml-core.git
+<span class="nb">cd</span><span class="w"> </span>financial-ml-core
+
+<span class="c1"># 2. Install in editable mode with development dependencies</span>
+<span class="c1"># Windows</span>
+python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;.[dev]&quot;</span>
+
+<span class="c1"># MacOS/Linux</span>
+python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;.[dev]&quot;</span>
 </code></pre></div>
 </details>
 
@@ -1263,17 +1278,18 @@ sanitization, feature engineering, and labeling in a single synchronized flow.</
 <p>In its simplest form, you only need to specify your tickers and the data source
 (from supported <a href="reference/config/providers/"><code>PROVIDERS</code></a>).
 The framework will use institutional-grade defaults for feature engineering and labeling.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">finml_core.pipelines.data_factory</span> <span class="kn">import</span> <span class="n">DatasetGenerator</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># --- AUTOMATED MODE ---</span>
+<span class="kn">from</span> <span class="nn">finml_core.pipelines.data_factory</span> <span class="kn">import</span> <span class="n">DatasetGenerator</span>
 
-<span class="c1"># 1. Initialize with automated provider (yfinance)</span>
+<span class="c1"># 1. Input `data_source` parameter refering to the provider</span>
 <span class="n">generator</span> <span class="o">=</span> <span class="n">DatasetGenerator</span><span class="p">(</span><span class="n">data_source</span><span class="o">=</span><span class="s1">&#39;yfinance&#39;</span><span class="p">)</span>
 
-<span class="c1"># 2. Run the pipeline</span>
-<span class="c1"># This automatically handles fetching, cleaning, indicators, and TBM labels</span>
+<span class="c1"># 2. Execute the pipeline</span>
+<span class="c1"># Automatically handles Ingestion, Sanitization, Features, and Labeling</span>
 <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">generator</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
-    <span class="n">tickers</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;AAPL&#39;</span><span class="p">,</span> <span class="s1">&#39;MSFT&#39;</span><span class="p">,</span> <span class="s1">&#39;GOOGL&#39;</span><span class="p">],</span> 
-    <span class="n">etf_reference</span><span class="o">=</span><span class="s1">&#39;^GSPC&#39;</span><span class="p">,</span> 
-    <span class="n">start_date</span><span class="o">=</span><span class="s1">&#39;2020-01-01&#39;</span>
+    <span class="n">tickers</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;AAPL&#39;</span><span class="p">,</span> <span class="s1">&#39;MSFT&#39;</span><span class="p">,</span> <span class="s1">&#39;GOOGL&#39;</span><span class="p">],</span>
+    <span class="n">etf_reference</span><span class="o">=</span><span class="s1">&#39;^GSPC&#39;</span><span class="p">,</span>
+    <span class="n">start_date</span><span class="o">=</span><span class="s1">&#39;2018-01-01&#39;</span>
 <span class="p">)</span>
 </code></pre></div>
 <details> <summary><b>📂 Advanced: Using your own Custom Dataset</b></summary>
@@ -1282,11 +1298,12 @@ If you already have a dataset (e.g., from a local CSV or database), you can
 inject it directly. The only requirement is that your DataFrame must follow the
 <b>MultiIndex [Date, Ticker]</b> geometry.
 
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">finml_core.pipelines.data_factory</span> <span class="kn">import</span> <span class="n">DatasetGenerator</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># --- CUSTOM MODE ---</span>
+<span class="kn">from</span> <span class="nn">finml_core.pipelines.data_factory</span> <span class="kn">import</span> <span class="n">DatasetGenerator</span>
 
-<span class="c1"># Assume &#39;my_df&#39; is a MultiIndex DataFrame with OHLCV columns</span>
+<span class="c1"># Assume &#39;my_df&#39; is a MultiIndex (Date, Ticker) DataFrame with OHLCV columns</span>
 
-<span class="c1"># Specifying dataset structure</span>
+<span class="c1"># Specifying &#39;my_df&#39; dataset structure</span>
 <span class="n">custom_provider</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">&#39;col_map&#39;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s1">&#39;open&#39;</span><span class="p">:</span> <span class="s1">&#39;Open&#39;</span><span class="p">,</span> <span class="s1">&#39;high&#39;</span><span class="p">:</span> <span class="s1">&#39;High&#39;</span><span class="p">,</span> <span class="s1">&#39;low&#39;</span><span class="p">:</span> <span class="s1">&#39;Low&#39;</span><span class="p">,</span>
@@ -1301,7 +1318,7 @@ inject it directly. The only requirement is that your DataFrame must follow the
 <span class="p">)</span>
 
 <span class="c1"># Pass your DataFrame directly to the run method</span>
-<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">generator</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">custom_data</span><span class="o">=</span><span class="n">my_df</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">generator</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">df_input</span><span class="o">=</span><span class="n">my_df</span><span class="p">)</span>
 </code></pre></div>
 </details>
 
@@ -1317,19 +1334,19 @@ execute a rigorous separation:</p>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">finml_core.model_selection.split</span> <span class="kn">import</span> <span class="n">purged_train_test_split</span>
 
-<span class="c1"># analysis_data contains the &#39;t1&#39; (label end dates) generated by the TBM engine</span>
-<span class="c1"># which is essential to identify the overlap periods.</span>
+<span class="c1"># Extracting t1 (label end dates for Purged CV)</span>
 <span class="n">analysis_data</span> <span class="o">=</span> <span class="n">generator</span><span class="o">.</span><span class="n">analysis_data</span>
+<span class="n">t1</span> <span class="o">=</span> <span class="n">analysis_data</span><span class="p">[</span><span class="s1">&#39;t1&#39;</span><span class="p">]</span>
 
+<span class="c1"># Split Data into Train &amp; Test (Purged &amp; Embargoed)</span>
 <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">purged_train_test_split</span><span class="p">(</span>
-    <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span>
-    <span class="n">t1</span><span class="o">=</span><span class="n">analysis_data</span><span class="p">[</span><span class="s1">&#39;t1&#39;</span><span class="p">],</span>
-    <span class="n">date_level</span><span class="o">=</span><span class="s1">&#39;Date&#39;</span><span class="p">,</span>    <span class="c1"># Level of the MultiIndex used for time</span>
-    <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
-    <span class="n">pct_embargo</span><span class="o">=</span><span class="mf">0.01</span>      <span class="c1"># 1% embargo to handle long-memory effects</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">t1</span><span class="p">,</span> 
+    <span class="n">date_level</span><span class="o">=</span><span class="s1">&#39;Date&#39;</span><span class="p">,</span>
+    <span class="n">test_size</span><span class="o">=</span><span class="mf">.2</span>
 <span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Train samples: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span><span class="si">}</span><span class="s2"> | Test samples: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Train size: </span><span class="si">{</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2"> | Test size: </span><span class="si">{</span><span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Purging + Embargo dates = </span><span class="si">{</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="3-leakage-free-validation-purged-k-fold">3. Leakage-Free Validation (Purged K-Fold)</h3>
 <p>Standard Cross-Validation assumes that observations are independent and
@@ -1362,7 +1379,7 @@ set by respecting the temporal overlap of labels.</p>
     <span class="n">rf_model</span><span class="p">,</span> 
     <span class="n">X_train</span><span class="p">,</span> 
     <span class="n">y_train</span><span class="p">,</span> 
-    <span class="n">cv</span><span class="o">=</span><span class="n">purged_cv</span><span class="p">,</span> 
+    <span class="n">cv</span><span class="o">=</span><span class="n">purged_cv</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">),</span> 
     <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;accuracy&#39;</span><span class="p">,</span>
     <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span>
 <span class="p">)</span>
@@ -1371,9 +1388,9 @@ set by respecting the temporal overlap of labels.</p>
 </code></pre></div>
 <hr />
 <h2 id="license-ethical-note">⚖️ License &amp; Ethical Note</h2>
-<p>This project is licensed under the MIT License. <strong>FinML-Core</strong> is an open-source contribution to the quantitative finance community. It is designed for research and educational purposes. Always remember: <em>Backtesting is not forecasting, and past performance does not guarantee future results.</em></p>
+<p>This project is licensed under the MIT License. <strong><code>finml-core</code></strong> is an open-source contribution to the quantitative finance community. It is designed for research and educational purposes. Always remember: <em>Backtesting is not forecasting, and past performance does not guarantee future results.</em></p>
 <hr />
-<h2 id="why-finml-core">🏛️ Why FinML-Core?</h2>
+<h2 id="why-finml-core">🏛️ Why <code>finml-core</code>?</h2>
 <ul>
 <li><strong>Integrity First</strong>: Every line of code is written to prevent data leakage, the #1 killer of financial ML models.</li>
 <li><strong>Built for Production</strong>: Unlike fragmented notebooks, this is a structured library with modular engines.</li>
