@@ -89,13 +89,16 @@ To ensure a clean and reproducible environment, follow these steps:
 #### 1. Setup Environment
 ```bash
 # Create a virtual environment
+# Windows
 python -m venv venv
+# MacOS/Linux
+python3 -m venv venv
 
-# Activate it (Windows)
-venv\Scripts\activate
-
-# Activate it (Mac/Linux)
-source venv/bin/activate
+# Activate it
+# Windows
+venv\Scripts\activae
+# MacOS/Linux
+source venv/bin/Activate
 ```
 
 #### 2. Installation
