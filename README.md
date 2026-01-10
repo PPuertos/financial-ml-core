@@ -131,7 +131,7 @@ print(f"Purging + Embargo dates = {X.shape[0] - X_train.shape[0] - X_test.shape[
 
 ## 🎯 Intended Use
 
-This framework is designed for researchers and engineers who challenge the status quo. It is built for those who value **statistical integrity** over ease of use, providing a transparent and rigorous path from raw uncertainty to strategic value.
+This framework is designed for researchers and engineers who challenge the status quo. It is built for those who value **statistical integrity** over ease of use, providing a transparent and rigorous path from raw uncertainty to strategic value. Further details are available [here](https://ppuertos.github.io/financial-ml-core/).
 
 ---
 
